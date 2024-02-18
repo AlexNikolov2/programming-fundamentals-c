@@ -1,2 +1,6 @@
-int x = 2;
-printf(x);
+#include <stdio.h>
+
+int main(){
+    printf("Hello bozo");
+    return 0;
+}
