@@ -6,9 +6,11 @@ int main(){
     printf("Set a num: \n");
     scanf("%d",&n);
     
-    for (size_t i = 0; i < n; i++)
-    {
-        
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j < i; j++) {
+            printf("%d ", i);
+        }
+        printf("\n");
     }
     
 }
