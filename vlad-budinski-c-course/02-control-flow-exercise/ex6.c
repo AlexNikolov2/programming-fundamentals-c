@@ -21,8 +21,7 @@ int main(){
     }
     day += 1; 
 
-    switch (month)
-    {
+    switch (month){
     case 1:
     case 3:
     case 5:
@@ -52,5 +51,5 @@ int main(){
             year += 1;
         }
     }
-        printf("The Next Awesome Day is: %d/ %d/ %d\n", day, month, year);
+        printf("Next Day is: %d/ %d/ %d\n", day, month, year);
 }
