@@ -45,7 +45,7 @@ void addNewElementToPos(int pos){
     }
     newElement -> next = temp->next;
     temp->next = newElement;
-
+    
 }
 void printElement(){
     struct Node* temp;
