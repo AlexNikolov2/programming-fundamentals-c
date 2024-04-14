@@ -2,6 +2,7 @@
 
 void sequence(int length){
     int num = 0;
+    ;
     for(int i=0; i < length; i++){
         num = num * 10 + 9;
     }
