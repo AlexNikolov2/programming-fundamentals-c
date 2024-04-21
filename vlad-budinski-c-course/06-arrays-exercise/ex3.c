@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-int calc_sum(int arr[], int size){
+int calc_sum(int arr[], int size){ //instead of arr[] you can use *ptr
     int sum = 0;
     for(int i=0; i<size; i++){
-        sum += arr[i];
+        sum += arr[i]; //ptr[i] instead of arr[i]
     }
     return sum;
 }
