@@ -2,5 +2,5 @@
 #include <stdlib.h>
 
 int main(){
-    printf("lefski sa slabaci");
+    printf('%d', (5 < 1) ? 5 : 1);
 }
