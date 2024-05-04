@@ -10,12 +10,12 @@ int main(){
     int sum = 0;
 
     if(a > b){
-        for(int i= b; i <= a; i++){
+        for(int i= a-1; i > b; i--){
             sum += i;
         }
     }
     else if(a < b){
-        for (int i = a; i <= b; i++){
+        for (int i = a+1; i < b; i++){
             sum += i;
         }
     }
