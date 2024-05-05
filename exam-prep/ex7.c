@@ -11,6 +11,7 @@ int findBiggest(int *ptr, int size){
 
     printf("biggest: %d\n", biggest);
 }
+
 int main(){
     int size;
     printf("Set array size: \n");
