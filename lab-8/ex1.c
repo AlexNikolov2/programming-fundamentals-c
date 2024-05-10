@@ -8,7 +8,7 @@ void create_binary_file(char *filename, int *arr, int size){
         exit(1);
     }
     fwrite(&size, sizeof(int), 1, f);
-    fwrite(arr, sizeof(int), size, f); //
+    fwrite(arr, sizeof(int), size, f); 
     fclose(f);
 }
 
