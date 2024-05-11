@@ -20,6 +20,25 @@ float price_by_letter(IceCream *arr, int *size, char *letter){
     return total_price;
 }
 
+void write_txt_file(IceCream *arr, int size, float kilo_price, int weight){
+    char text_file_name[] = "info.txt";
+    FILE *text_file = fopen(text_file_name, "w");
+
+    if (text_file == NULL) {
+        printf("Failed to open file.\n");
+        return;
+    }
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i].kilo_price < kilo_price && arr[i].weight > weight) {
+            fprintf(text_file, "%s;%s;%d;%.2f leva\n", arr[i].id, arr[i].name, arr[i].weight, arr[i].kilo_price);
+        }
+    }
+
+    fclose(text_file);
+    
+}
+
 int main(){
     int size;
     printf("Set size: \n");
@@ -54,6 +73,14 @@ int main(){
     printf("Set letter: \n");
     scanf(" %c", &letter);
 
+    int kilo_price_param;
+    printf("Set price per kilo: \n");
+    scanf("%d", &kilo_price_param);
+
+    int weight_param;
+    printf("Set weight: \n");
+    scanf("%d", &weight_param);
+
     /*printf("\nIce Cream details:\n");
     for (int i = 0; i < size; i++) {
         printf("\nIce Cream #%d\n", i+1);
@@ -66,6 +93,8 @@ int main(){
     float total_price = price_by_letter(icecreams_arr, size, letter);
 
     printf("Total price by letter %c: %.2f", letter, total_price);
+
+    write_txt_file(icecreams_arr, size, kilo_price_param, weight_param);
     free(icecreams_arr);
 
 
