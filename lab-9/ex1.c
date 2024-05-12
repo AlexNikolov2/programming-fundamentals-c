@@ -26,17 +26,45 @@ void write_txt_file(IceCream *arr, int size, float kilo_price, int weight){
 
     if (text_file == NULL) {
         printf("Failed to open file.\n");
-        return;
+        return 1;
     }
 
     for (int i = 0; i < size; i++) {
         if (arr[i].kilo_price < kilo_price && arr[i].weight > weight) {
             fprintf(text_file, "%s;%s;%d;%.2f leva\n", arr[i].id, arr[i].name, arr[i].weight, arr[i].kilo_price);
         }
+        else{
+            fprintf(text_file, "0");
+        }
     }
 
     fclose(text_file);
     
+}
+
+void read_bin_file(char *id){
+    FILE *bin_file = fopen("icecream.bin", "rb");
+
+    if(bin_file == NULL){
+        printf("Failed to open file");
+        return 1;
+    }
+    IceCream icecream;
+
+    while(fread(&icecream, sizeof(IceCream), 1, bin_file) == 1){
+        if(strcmp(icecream.id, id) == 0){
+            printf("Ice Cream ID: %s\n", icecream.id);
+            printf("Name: %s\n", icecream.name);
+            printf("Weight: %d\n", icecream.weight);
+            printf("Price per kilo: %.2f\n", icecream.kilo_price);
+            break; // Exit loop once matching record is found
+        }
+    }
+
+    fclose(bin_file);
+
+    //read the information from the bin file that alrwady exists and print the information about the icecream with the respective id
+
 }
 
 int main(){
@@ -81,6 +109,11 @@ int main(){
     printf("Set weight: \n");
     scanf("%d", &weight_param);
 
+    char id_param[3];
+    printf("Set ID to find: \n");
+    scanf("%2s",&id_param);
+
+
     /*printf("\nIce Cream details:\n");
     for (int i = 0; i < size; i++) {
         printf("\nIce Cream #%d\n", i+1);
@@ -95,6 +128,8 @@ int main(){
     printf("Total price by letter %c: %.2f", letter, total_price);
 
     write_txt_file(icecreams_arr, size, kilo_price_param, weight_param);
+    read_bin_file(id_param);
+
     free(icecreams_arr);
 
 
